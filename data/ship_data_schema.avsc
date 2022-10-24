@@ -1,0 +1,34 @@
+{
+  "type" : "record",
+  "name" : "trx_schema",
+  "namespace" : "trx_schema",
+  "fields" : [ {
+        "name" : "Ship_name",
+        "type" : ["null","string"]
+  }, {
+        "name" : "Cruise_line",
+        "type" : ["null","string"]
+  }, {
+        "name" : "Age",
+        "type" : ["null","int"]
+  }, {
+         "name" : "Tonnage",
+         "type" : ["null","long"]
+  }, {
+         "name" : "passengers",
+         "type" : ["null","long"]
+  }, {
+         "name" : "length",
+         "type" : ["null","long"]
+  }, {
+          "name" : "cabins",
+          "type" : ["null","long"]
+  }, {
+          "name" : "passenger_density",
+          "type" : ["null","long"]
+  }, {
+          "name" : "crew",
+          "type" : ["null","long"]
+  }
+   ]
+}

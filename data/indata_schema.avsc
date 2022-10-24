@@ -1,0 +1,29 @@
+{
+  "type" : "record",
+  "name" : "trx_schema",
+  "namespace" : "trx_schema",
+  "fields" : [ {
+    "name" : "name",
+    "type" : ["null","string"]
+  }, {
+    "name" : "id1",
+    "type" : ["null","int"]
+  }, {
+    "name" : "id2",
+    "type" : ["null","int"]
+  }, {
+    "name" : "id3",
+    "type" : ["null","int"]
+  }, {
+     "name" : "id4",
+     "type" : ["null","long"]
+  }, {
+      "name" : "tx_timestamp",
+      "type" : ["null", {
+                        "type" : "int",
+                        "logicalType" : "date"
+                        }
+                ]
+      }
+   ]
+}
