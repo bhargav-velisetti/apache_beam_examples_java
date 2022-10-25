@@ -18,21 +18,20 @@ public class BeamShemaUtil {
     }
 
 
-    public org.apache.avro.Schema getAvroSchema() throws IOException {
+    public org.apache.avro.Schema getAvroSchema()  {
 
-        org.apache.avro.Schema avro_schema =  new Schema.Parser().parse(new File(this.path));
-        return avro_schema;
-
+       try {
+           org.apache.avro.Schema avro_schema =  new Schema.Parser().parse(new File(this.path));
+           return avro_schema;
+       } catch (IOException e) {
+           throw new RuntimeException(e);
+       }
     }
 
     public org.apache.beam.sdk.schemas.Schema convertAvroBeamSchema() {
 
-        try {
-            return AvroUtils.toBeamSchema(getAvroSchema());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-   }
+        return AvroUtils.toBeamSchema(getAvroSchema());
+    }
 
 
 

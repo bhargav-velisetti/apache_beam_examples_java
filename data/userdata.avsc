@@ -1,0 +1,46 @@
+{
+  "type" : "record",
+  "name" : "userdata_schema",
+  "namespace" : "userdata_schema",
+  "fields" : [ {
+    "name" : "registration_dttm",
+    "type" : ["null","long"]
+
+  }, {
+    "name" : "id",
+    "type" : ["null","int"]
+  }, {
+    "name" : "first_name",
+    "type" : ["null","string"]
+  }, {
+    "name" : "last_name",
+    "type" : ["null","string"]
+  }, {
+     "name" : "email",
+     "type" : ["null","string"]
+  }, {
+     "name" : "gender",
+     "type" : ["null","string"]
+  }, {
+     "name" : "ip_address",
+     "type" : ["null","string"]
+  }, {
+     "name" : "cc",
+     "type" : ["null","string"]
+  }, {
+      "name" : "country",
+      "type" : ["null","string"]
+  }, {
+      "name" : "birthdate",
+      "type" : ["null","string"]
+  }, {
+      "name" : "salary",
+      "type" : ["null","double"]
+  }, {
+      "name" : "tittle",
+      "type" : ["null","string"]
+  }, {
+      "name" : "comments",
+      "type" : ["null","string"]
+  } ]
+}

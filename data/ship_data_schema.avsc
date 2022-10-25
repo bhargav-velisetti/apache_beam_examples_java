@@ -10,25 +10,25 @@
         "type" : ["null","string"]
   }, {
         "name" : "Age",
-        "type" : ["null","int"]
+        "type" : ["null","float"]
   }, {
          "name" : "Tonnage",
-         "type" : ["null","long"]
+         "type" : ["null","float"]
   }, {
          "name" : "passengers",
-         "type" : ["null","long"]
+         "type" : ["null","float"]
   }, {
          "name" : "length",
-         "type" : ["null","long"]
+         "type" : ["null","float"]
   }, {
           "name" : "cabins",
-          "type" : ["null","long"]
+          "type" : ["null","float"]
   }, {
           "name" : "passenger_density",
-          "type" : ["null","long"]
+          "type" : ["null","float"]
   }, {
           "name" : "crew",
-          "type" : ["null","long"]
+          "type" : ["null","float"]
   }
    ]
 }

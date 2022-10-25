@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ReadParuetExample01" type="Application" factoryName="Application" nameIsGenerated="true">
+    <option name="MAIN_CLASS_NAME" value="ReadParuetExample01" />
+    <module name="ApacheBeamExamples" />
+    <option name="PROGRAM_PARAMETERS" value="--schemaFile=&quot;data/userdata.avsc&quot; --inputFile=&quot;data/userdata*.parquet&quot;" />
+    <shortenClasspath name="ARGS_FILE" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
