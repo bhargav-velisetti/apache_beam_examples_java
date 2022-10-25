@@ -1,0 +1,30 @@
+{
+    "type": "record",
+    "name": "person_schema",
+    "fields":
+    [
+      {"name": "firstName","type": "string"},
+      {"name": "lastName","type": "string"},
+      {"name": "age","type": "int"},
+      {"name": "address",
+      "type": {
+      "name": "address",
+      "type": "record",
+      "fields": [
+                 {"name":"streetAddress" , "type": "string"},
+                 {"name":"city","type":"string"},
+                 {"name":"state","type":"string"},
+                 {"name":"postalCode","type":"int"}
+                 ] }
+      },
+      {"name": "phoneNumbers",
+      "type": {
+      "name": "phoneNumbers",
+      "type": "record",
+      "fields": [
+                {"name":"type","type":"string" },
+                {"name":"number","type":"string"}
+                ] }
+      }
+    ]
+}
