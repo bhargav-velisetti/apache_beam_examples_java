@@ -3,6 +3,7 @@
     <option name="MAIN_CLASS_NAME" value="ReadAvroExample01" />
     <module name="ApacheBeamExamples" />
     <option name="PROGRAM_PARAMETERS" value="--schemaFile=&quot;data/twitter.avsc&quot; --inputFile=&quot;data/twitter.avro&quot;" />
+    <shortenClasspath name="ARGS_FILE" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
