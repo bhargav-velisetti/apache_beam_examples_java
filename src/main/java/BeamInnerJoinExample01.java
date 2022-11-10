@@ -14,6 +14,7 @@ import org.apache.beam.sdk.values.Row;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class BeamInnerJoinExample01 {
 
     public static void main(String[] args) {
