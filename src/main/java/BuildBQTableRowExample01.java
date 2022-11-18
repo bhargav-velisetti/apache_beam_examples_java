@@ -4,6 +4,7 @@ import org.apache.beam.runners.direct.DirectRunner;
 import org.apache.beam.sdk.Pipeline;
 import org.apache.beam.sdk.PipelineResult;
 import org.apache.beam.sdk.io.TextIO;
+import org.apache.beam.sdk.io.gcp.bigquery.BigQueryIO;
 import org.apache.beam.sdk.options.PipelineOptions;
 import org.apache.beam.sdk.options.PipelineOptionsFactory;
 import org.apache.beam.sdk.options.ValueProvider;
@@ -32,6 +33,9 @@ public  class BuildBQTableRowExample01 {
 
         PCollection<TableRow>  pc3 = pc2.apply(ParDo.of(new BeamRowUtil.BeamRowToBQRow()));
         pc3.apply(ParDo.of(new BeamRowUtil.TableRowPrinter()));
+
+
+
 
         PipelineResult result = p.run();
         result.waitUntilFinish();

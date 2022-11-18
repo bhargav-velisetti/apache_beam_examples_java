@@ -18,7 +18,7 @@ public class WriteBigQueryExample01 {
     public static void main(String[] args) {
 
         PipelineOptions options = PipelineOptionsFactory.create();
-        options.setTempLocation("data/temp/");
+        options.setTempLocation("gs://temp/folder");
         options.setRunner(DirectRunner.class);
         Pipeline p              = Pipeline.create(options);
 
@@ -27,7 +27,7 @@ public class WriteBigQueryExample01 {
         org.apache.beam.sdk.schemas.Schema beam_schema = beamShemaUtil.convertAvroBeamSchema();
         ValueProvider<org.apache.beam.sdk.schemas.Schema> schema =  ValueProvider.StaticValueProvider.of(beam_schema);
 
-        PCollection<String> pc1 = p.apply(TextIO.read().from("ship_data.csv"));
+        PCollection<String> pc1 = p.apply(TextIO.read().from("data/ship_data.csv"));
         PCollection<Row> pc2 =pc1.apply(ParDo.of(new ReadCsvExample01.CSVRowConverter(schema))).setRowSchema(beam_schema) ;
 
         TableReference tableReference = new TableReference();
@@ -36,10 +36,13 @@ public class WriteBigQueryExample01 {
         tableReference.setTableId("bq_table");
 
 
+
+
         pc2.apply(BigQueryIO.<Row>write()
-                .to("PROJECT:dataset.bqtable") // or tableReference
+                //.to("PROJECT:dataset.bqtable") // or tableReference
+                .to(tableReference)
                 .withSchema(BigQueryUtils.toTableSchema(beam_schema))
-               //.useBeamSchema(beam_schema) // either useBeamSchema or withSchema
+                .useBeamSchema()
                 .withWriteDisposition(BigQueryIO.Write.WriteDisposition.WRITE_APPEND)
                 .withCreateDisposition(BigQueryIO.Write.CreateDisposition.CREATE_IF_NEEDED)
         );
