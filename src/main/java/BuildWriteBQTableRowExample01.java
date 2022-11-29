@@ -27,6 +27,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import java.io.Serializable;
+
 
 public class BuildWriteBQTableRowExample01 {
 
@@ -35,17 +37,17 @@ public class BuildWriteBQTableRowExample01 {
 
         PipelineOptions options = PipelineOptionsFactory.create();
         options.setRunner(DirectRunner.class);
-        options.setTempLocation("gs://sample_data_bhargav/temp/");
+        options.setTempLocation("gs://temp_loc/temp/");
 
         TableReference tableReference = new TableReference();
-        tableReference.setProjectId("PROJECT");
+        tableReference.setProjectId("project");
         tableReference.setDatasetId("dataset");
-        tableReference.setTableId("bq_table");
+        tableReference.setTableId("table");
 
 
         Pipeline p = Pipeline.create(options);
 
-        BeamShemaUtil beamShemaUtil = new BeamShemaUtil("data/sample-data-schema.avsc");
+        BeamShemaUtil beamShemaUtil = new BeamShemaUtil("data/sample-data-schema2.avsc");
         List<TableFieldSchema> slist = beamShemaUtil.convertBQTableSchema().getFields();
 
 
@@ -55,7 +57,7 @@ public class BuildWriteBQTableRowExample01 {
 
         pc2.apply(BigQueryIO.writeTableRows()
                 .withSchema(beamShemaUtil.convertBQTableSchema())
-                .withCreateDisposition(BigQueryIO.Write.CreateDisposition.CREATE_IF_NEEDED)
+                .withCreateDisposition(BigQueryIO.Write.CreateDisposition.CREATE_NEVER)
                 .withWriteDisposition(BigQueryIO.Write.WriteDisposition.WRITE_TRUNCATE)
                 .to(tableReference)
         );

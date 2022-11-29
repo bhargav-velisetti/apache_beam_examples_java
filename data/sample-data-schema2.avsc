@@ -1,0 +1,20 @@
+{
+    "type": "record",
+    "name": "person_schema",
+    "fields":
+    [
+      {"name": "firstName","type": "string"},
+      {"name": "lastName","type": "string"},
+      {"name": "age","type": "int"},
+      {"name": "address","type": "string"},
+      {"name": "phoneNumbers",
+      "type": {
+      "name": "phoneNumbers",
+      "type": "record",
+      "fields": [
+                {"name":"type","type":"string" },
+                {"name":"number","type":"string"}
+                ] }
+      }
+    ]
+}
