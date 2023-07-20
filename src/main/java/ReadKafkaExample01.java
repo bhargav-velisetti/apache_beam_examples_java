@@ -13,6 +13,10 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.IntegerDeserializer;
 import org.joda.time.Duration;
 
+import javax.annotation.concurrent.Immutable;
+import java.util.HashMap;
+import java.util.Map;
+
 public class ReadKafkaExample01 {
 
 
@@ -20,8 +24,14 @@ public class ReadKafkaExample01 {
 
         Pipeline p = Pipeline.create();
 
+        Map<String, Object> a = new HashMap();
+        a.put("group.id","some-group-id");
+        a.put("enable.auto.commit", "false");
+        a.put("auto.offset.reset", "earliest");
         PCollection<KafkaRecord<Integer, String>> pckafka = p.apply(KafkaIO.<Integer, String>read()
+                                                        .commitOffsetsInFinalize()
                                                         .withBootstrapServers("localhost:9092")
+                                                        .withConsumerConfigUpdates(a)
                                                         .withTopic("test_producer01")
                                                         .withKeyDeserializer(IntegerDeserializer.class)
                                                         .withValueDeserializer(StringDeserializer.class));
@@ -37,6 +47,10 @@ public class ReadKafkaExample01 {
         public void processElement(ProcessContext  c) {
 
             KafkaRecord<Integer, String> record = c.element();
+            System.out.println("offset = " + record.getOffset() + " data = " + record.getKV().getValue() + " TS= " + record.getTimestamp());
+           // record.getOffset();
+           // record.getKV().getValue();
+            /*
             KV<Integer,String> record2 =  record.getKV();
 
             Long processed_tmp  = record.getTimestamp();
@@ -45,6 +59,8 @@ public class ReadKafkaExample01 {
             String value        = record2.getValue();
 
             System.out.println("Topic = " + topic + " Fed to beam at unix epoch = " + processed_tmp + " message key " + key + " message content " + value );
+
+             */
         }
     }
 }
