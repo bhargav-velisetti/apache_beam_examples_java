@@ -12,4 +12,13 @@ public interface MyOptions extends PipelineOptions {
 
     public void setOutputFile(String outputFile);
     public String getOutputFile();
+    public  void setPubSubTopic(String pubSubTopic);
+    public String getPubSubTopic();
+
+    public  void  setBQProject(String bQProject);
+    public String getBQProject();
+
+    public  void  setBQDataset(String bQDataset);
+    public String getBQDataset();
+
 }
